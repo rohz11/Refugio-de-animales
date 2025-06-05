@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum, Date, Boolean, Text
 from sqlalchemy.orm import relationship
-from database import Base
+from .database import Base
 
 # Tablas independientes (sin FK)
 class Rol(Base):
