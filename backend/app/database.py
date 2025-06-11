@@ -23,3 +23,10 @@ SessionLocal = sessionmaker(
 
 # 4. Base para los modelos de SQLAlchemy
 Base = declarative_base()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
