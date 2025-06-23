@@ -1,0 +1,52 @@
+.home-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: url("/fondo_refugio.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.home-content {
+  margin-top: 120px;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-title {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.home-subtitle {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.adopt-btn {
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(180deg, #00ff99 0%, #00e6c3 100%);
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 24px rgba(0, 230, 195, 0.15);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.adopt-btn:hover {
+  background: linear-gradient(180deg, #00e6c3 0%, #00ff99 100%);
+  box-shadow: 0 6px 32px rgba(0, 255, 153, 0.25);
+}

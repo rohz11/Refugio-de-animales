@@ -1,0 +1,71 @@
+.navbar {
+  width: 100vw;
+  height: 60px;
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  border-bottom: 4px solid #008528;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #008528;
+}
+
+.login-register-group {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 4px 008528;
+}
+
+.login-btn {
+  background: #232526;
+  color: #008528;
+  border-right: 1px solid #232526;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.login-btn:hover {
+  background: #008528;
+  color: #fff;
+}
+
+.register-btn {
+  background: #232526;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.register-btn:hover {
+  background: #008528;
+  color: #232526;
+}
