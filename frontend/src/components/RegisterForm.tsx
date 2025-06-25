@@ -1,64 +1,128 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { apiFetch } from "../api";
+import React, { useState } from "react";
+import { registerUser } from "../userService";
 
-export default function RegisterForm() {
-  const [alias, setAlias] = useState("");
-  const [clave, setClave] = useState("");
-  const [pregunta, setPregunta] = useState("");
-  const [respuesta, setRespuesta] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+const RegisterForm: React.FC = () => {
+  const [form, setForm] = useState({
+    nombre: "",
+    apellido: "",
+    dni: "",
+    telefono: "",
+    direccion: "",
+    email: "",
+    alias: "",
+    clave: "",
+    pregunta: "",
+    respuesta: "",
+  });
+  const [mensaje, setMensaje] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
     try {
-      await apiFetch("/usuarios/registro", {
-        method: "POST",
-        body: JSON.stringify({
-          alias,
-          clave,
-          pregunta_seguridad: pregunta,
-          respuesta_seguridad: respuesta,
-        }),
-      });
-      navigate("/login");
-    } catch (err) {
-      setError("Error al registrar usuario");
+      // Construir el payload según espera el backend
+      const payload = {
+        alias: form.alias,
+        clave: form.clave,
+        pregunta_seguridad: form.pregunta,
+        respuesta_seguridad: form.respuesta,
+        persona: {
+          nombre: form.nombre,
+          apellido: form.apellido,
+          dni: form.dni,
+          telefono: form.telefono,
+          correo: form.email,
+          direccion: form.direccion,
+        },
+      };
+      await registerUser(payload);
+      setMensaje("¡Registro exitoso!");
+    } catch (error: any) {
+      setMensaje("Error en el registro");
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Registrarse</h2>
       <input
-        value={alias}
-        onChange={(e) => setAlias(e.target.value)}
-        placeholder="Usuario"
+        name="nombre"
+        placeholder="Nombre"
+        value={form.nombre}
+        onChange={handleChange}
         required
       />
       <input
+        name="apellido"
+        placeholder="Apellido"
+        value={form.apellido}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="dni"
+        placeholder="DNI"
+        value={form.dni}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="telefono"
+        placeholder="Teléfono"
+        value={form.telefono}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="direccion"
+        placeholder="Dirección"
+        value={form.direccion}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        value={form.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="alias"
+        placeholder="Alias de usuario"
+        value={form.alias}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="clave"
         type="password"
-        value={clave}
-        onChange={(e) => setClave(e.target.value)}
-        placeholder="Contraseña"
+        placeholder="Clave"
+        value={form.clave}
+        onChange={handleChange}
         required
       />
       <input
-        value={pregunta}
-        onChange={(e) => setPregunta(e.target.value)}
+        name="pregunta"
         placeholder="Pregunta de seguridad"
+        value={form.pregunta}
+        onChange={handleChange}
         required
       />
       <input
-        value={respuesta}
-        onChange={(e) => setRespuesta(e.target.value)}
+        name="respuesta"
         placeholder="Respuesta de seguridad"
+        value={form.respuesta}
+        onChange={handleChange}
         required
       />
       <button type="submit">Registrarse</button>
-      {error && <div style={{ color: "red" }}>{error}</div>}
+      {mensaje && <p>{mensaje}</p>}
     </form>
   );
-}
+};
+
+export default RegisterForm;

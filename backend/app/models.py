@@ -68,7 +68,7 @@ class Especie(Base):
     __tablename__ = "especies"
     
     id_especie = Column(Integer, primary_key=True, index=True)
-    especie = Column(String(50), unique=True, nullable=False)
+    nombre = Column(String(50), unique=True, nullable=False)
     estado = Column(Boolean, default=True)
     fecha_registro = Column(DateTime, default=datetime.utcnow)
     
@@ -79,7 +79,7 @@ class Raza(Base):
     
     id_raza = Column(Integer, primary_key=True, index=True)
     id_especie = Column(Integer, ForeignKey('especies.id_especie'))
-    raza = Column(String(50), nullable=False)
+    nombre = Column(String(50), nullable=False)
     estado = Column(Boolean, default=True)
     fecha_registro = Column(DateTime, default=datetime.utcnow)
     
@@ -113,6 +113,7 @@ class Mascota(Base):
     id_raza = Column(Integer, ForeignKey("razas.id_raza"))
     edad = Column(Integer)
     estado_mascota = Column(String(20))
+    descripcion = Column(String(255))  # o Text si quieres más largo
     fecha_registro = Column(DateTime, default=datetime.utcnow)
     fecha_regreso = Column(Date)
     registrado_por = Column(Integer, ForeignKey('usuarios.id_usuario'))

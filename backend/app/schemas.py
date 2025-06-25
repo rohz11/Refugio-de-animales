@@ -2,11 +2,26 @@ from pydantic import BaseModel
 from typing import Optional, List
 from datetime import datetime
 
+class PersonaCreate(BaseModel):
+    nombre: str
+    apellido: str
+    dni: str
+    telefono: str
+    correo: str
+    direccion: str
+
 class UsuarioCreate(BaseModel):
     alias: str
     clave: str
-    pregunta_seguridad: str | None = None
-    respuesta_seguridad: str | None = None
+    pregunta_seguridad: str
+    respuesta_seguridad: str
+    persona: PersonaCreate
+
+class UsuarioResponse(BaseModel):
+    id_usuario: int
+    alias: str
+    estado: bool
+    persona: PersonaCreate
 
 class UsuarioLogin(BaseModel):
     alias: str
@@ -19,6 +34,35 @@ class UsuarioUpdate(BaseModel):
 class CambiarClave(BaseModel):
     clave_actual: str
     nueva_clave: str
+
+class CambiarPreguntas(BaseModel):
+    clave_actual: str
+    pregunta_seguridad: str
+    respuesta_seguridad: str
+
+class CambiarAlias(BaseModel):
+    nuevo_alias: str
+
+
+# persona
+class CambiarNombre(BaseModel):
+    nuevo_nombre: str
+
+class CambiarApellido(BaseModel):
+    nuevo_apellido: str
+
+class CambiarDNI(BaseModel):
+    nuevo_dni: str
+
+class CambiarCorreo(BaseModel):
+    nuevo_correo: str
+
+class CambiarTelefono(BaseModel):
+    nuevo_telefono: str
+
+class CambiarDireccion(BaseModel):
+    nueva_direccion: str
+    
 class MascotaCreate(BaseModel):
     nombre_mascota: str
     sexo: Optional[str] = None
@@ -53,8 +97,8 @@ class MascotaResponse(BaseModel):
     id_mascota: int
     nombre_mascota: str
     sexo: Optional[str]
-    especie_id: int
-    raza_id: int
+    id_especie: int
+    id_raza: int
     edad: Optional[int]
     estado_mascota: Optional[str]
     descripcion: Optional[str]
