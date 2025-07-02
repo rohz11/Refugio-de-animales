@@ -4,6 +4,7 @@ import "./Navbar.css";
 export default function Navbar() {
   return (
     <nav className="navbar">
+      <div className="navbar-brand">Huellitas de amor</div>
       <div className="navbar-links">
         <Link className="nav-link" to="/Home">
           Home
