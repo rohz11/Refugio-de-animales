@@ -25,6 +25,9 @@
 }
 
 .home-subtitle {
+  max-width: 600px;
+  margin: 1.5rem auto;
+  text-align: center;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 1.2rem;
   color: #e0e0e0;
