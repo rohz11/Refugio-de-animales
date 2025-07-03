@@ -7,12 +7,12 @@ class PersonaCreate(BaseModel):
     apellido: str
     dni: str
     telefono: str
-    correo: str
     direccion: str
 
 class UsuarioCreate(BaseModel):
     alias: str
     clave: str
+    correo: str  # Nuevo campo aquí
     pregunta_seguridad: str
     respuesta_seguridad: str
     persona: PersonaCreate
@@ -20,6 +20,7 @@ class UsuarioCreate(BaseModel):
 class UsuarioResponse(BaseModel):
     id_usuario: int
     alias: str
+    correo: str  # Nuevo campo aquí
     estado: bool
     persona: PersonaCreate
 
@@ -32,17 +33,22 @@ class UsuarioUpdate(BaseModel):
     respuesta_seguridad: str | None = None
 
 class CambiarClave(BaseModel):
+    id_usuario: Optional[int] = None
     clave_actual: str
     nueva_clave: str
 
 class CambiarPreguntas(BaseModel):
+    id_usuario: Optional[int] = None
     clave_actual: str
     pregunta_seguridad: str
     respuesta_seguridad: str
 
 class CambiarAlias(BaseModel):
+    id_usuario: Optional[int] = None
     nuevo_alias: str
 
+class CambiarCorreo(BaseModel):
+    nuevo_correo: str
 
 # persona
 class CambiarNombre(BaseModel):
@@ -53,9 +59,6 @@ class CambiarApellido(BaseModel):
 
 class CambiarDNI(BaseModel):
     nuevo_dni: str
-
-class CambiarCorreo(BaseModel):
-    nuevo_correo: str
 
 class CambiarTelefono(BaseModel):
     nuevo_telefono: str

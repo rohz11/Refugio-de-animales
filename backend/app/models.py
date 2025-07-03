@@ -7,6 +7,7 @@ class Usuario(Base):
     __tablename__ = "usuarios"
     
     id_usuario = Column(Integer, primary_key=True, index=True)
+    correo = Column(String(100), unique=True, nullable=False)
     alias = Column(String(50), unique=True, nullable=False)
     clave = Column(String(255), nullable=False)
     pregunta_seguridad = Column(Text)
@@ -57,7 +58,6 @@ class Persona(Base):
     direccion = Column(Text)
     telefono = Column(String(20))
     dni = Column(String(20), unique=True)
-    correo = Column(String(100), unique=True)
     estado = Column(Boolean, default=True)
     fecha_actualizacion = Column(DateTime, onupdate=datetime.utcnow)
     
