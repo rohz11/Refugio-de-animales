@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../userService";
+import "./RegisterForm.css";
 
 const RegisterForm: React.FC = () => {
   const [form, setForm] = useState({
@@ -46,82 +47,85 @@ const RegisterForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="nombre"
-        placeholder="Nombre"
-        value={form.nombre}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="apellido"
-        placeholder="Apellido"
-        value={form.apellido}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="dni"
-        placeholder="DNI"
-        value={form.dni}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="telefono"
-        placeholder="Teléfono"
-        value={form.telefono}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="direccion"
-        placeholder="Dirección"
-        value={form.direccion}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="alias"
-        placeholder="Alias de usuario"
-        value={form.alias}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="clave"
-        type="password"
-        placeholder="Clave"
-        value={form.clave}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="pregunta"
-        placeholder="Pregunta de seguridad"
-        value={form.pregunta}
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="respuesta"
-        placeholder="Respuesta de seguridad"
-        value={form.respuesta}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Registrarse</button>
-      {mensaje && <p>{mensaje}</p>}
-    </form>
+    <div className="register-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <h2>Registro</h2>
+        <input
+          name="nombre"
+          placeholder="Nombre"
+          value={form.nombre}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="apellido"
+          placeholder="Apellido"
+          value={form.apellido}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="dni"
+          placeholder="DNI"
+          value={form.dni}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="telefono"
+          placeholder="Teléfono"
+          value={form.telefono}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="direccion"
+          placeholder="Dirección"
+          value={form.direccion}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="alias"
+          placeholder="Alias de usuario"
+          value={form.alias}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="clave"
+          type="password"
+          placeholder="Clave"
+          value={form.clave}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="pregunta"
+          placeholder="Pregunta de seguridad"
+          value={form.pregunta}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="respuesta"
+          placeholder="Respuesta de seguridad"
+          value={form.respuesta}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Registrarse</button>
+        {mensaje && <p>{mensaje}</p>}
+      </form>
+    </div>
   );
 };
 
