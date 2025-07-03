@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../userService";
+import "./RegisterForm.css";
 
 const RegisterForm: React.FC = () => {
   const [form, setForm] = useState({
