@@ -18,22 +18,30 @@
 .navbar-brand {
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #fff;  
+  color: #fff; 
   margin-right: auto;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
-  text-shadow: 1px 2px 6px #23252680;
-  gap: 0.5rem;
+  text-shadow: 2px 3px 8px #23252680, 0 0 2px #fff2;
+  gap: 0.7rem;
   user-select: none;
+  padding-left: 0.5rem;
+  transition: color 0.3s;
 }
 
 .navbar-brand::before {
   content: "🐾";
-  font-size: 2.2rem;
-  margin-right: 0.3rem;
-  filter: drop-shadow(0 1px 2px #23252680);
+  font-size: 2.5rem;
+  margin-right: 0.4rem;
+  filter: drop-shadow(0 2px 4px #23252680);
+  animation: paw-bounce 1.2s infinite alternate;
+}
+
+@keyframes paw-bounce {
+  0% { transform: translateY(0);}
+  100% { transform: translateY(-6px);}
 }
 
 .navbar-links {
