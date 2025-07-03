@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../userService";
+import "./LoginForm.css";
 
 export default function LoginForm() {
   const [alias, setAlias] = useState("");
@@ -27,23 +28,25 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Iniciar sesión</h2>
-      <input
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2>Iniciar sesión</h2>
+        <input
         value={alias}
         onChange={(e) => setAlias(e.target.value)}
         placeholder="Usuario"
         required
       />
       <input
-        type="password"
-        value={clave}
-        onChange={(e) => setClave(e.target.value)}
-        placeholder="Contraseña"
-        required
+      type="password"
+      value={clave}
+      onChange={(e) => setClave(e.target.value)}
+      placeholder="Contraseña"
+      required
       />
       <button type="submit">Entrar</button>
       {error && <div style={{ color: "red" }}>{error}</div>}
-    </form>
+      </form>
+    </div>   
   );
 }
