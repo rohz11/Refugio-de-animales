@@ -27,6 +27,7 @@ const RegisterForm: React.FC = () => {
       const payload = {
         alias: form.alias,
         clave: form.clave,
+        correo: form.email,
         pregunta_seguridad: form.pregunta,
         respuesta_seguridad: form.respuesta,
         persona: {
@@ -34,7 +35,6 @@ const RegisterForm: React.FC = () => {
           apellido: form.apellido,
           dni: form.dni,
           telefono: form.telefono,
-          correo: form.email,
           direccion: form.direccion,
         },
       };

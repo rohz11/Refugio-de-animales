@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 # Importa los routers (debes crearlos en la carpeta routers)
-from .routers import usuarios, roles, mascotas, adopciones, especies, razas, perfil_adopcion
+from .routers import usuarios, mascotas, adopciones, especies, razas, perfil_adopcion, personas
+from .auth import security
 
 app = FastAPI(
     title="Sistema de Refugio de Animales",
@@ -19,13 +20,15 @@ app.add_middleware(
 )
 
 # Incluye los routers principales
+app.include_router(security.router, prefix="/security", tags=["Seguridad"])
 app.include_router(usuarios.router, prefix="/usuarios", tags=["Usuarios"])
-app.include_router(roles.router, prefix="/roles", tags=["Roles"])
+app.include_router(personas.router, prefix="/personas", tags=["Personas"])
 app.include_router(mascotas.router, prefix="/mascotas", tags=["Mascotas"])
 app.include_router(adopciones.router, prefix="/adopciones", tags=["Adopciones"])
 app.include_router(especies.router, prefix="/especies", tags=["Especies"])
 app.include_router(razas.router, prefix="/razas", tags=["Razas"])
 app.include_router(perfil_adopcion.router, prefix="/perfil-adopcion", tags=["Perfil Adopción"])
+
 
 @app.get("/")
 def root():

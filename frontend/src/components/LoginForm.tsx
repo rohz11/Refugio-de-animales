@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { apiFetch } from "../api";
+import { loginUser } from "../userService";
 
 export default function LoginForm() {
   const [alias, setAlias] = useState("");
@@ -12,12 +12,15 @@ export default function LoginForm() {
     e.preventDefault();
     setError("");
     try {
-      const data = await apiFetch("/usuarios/login", {
-        method: "POST",
-        body: JSON.stringify({ alias, clave }),
-      });
-      localStorage.setItem("token", data.access_token);
-      navigate("/perfil");
+      const res = await loginUser({ alias, clave });
+      const { access_token } = res.data;
+      // Puedes ajustar el tiempo de expiración según tu backend (ejemplo: 1 hora)
+      const expiresInMinutes = 60;
+      const expiresAt = Date.now() + expiresInMinutes * 60 * 1000;
+      localStorage.setItem("token", access_token);
+      localStorage.setItem("token_expires_at", expiresAt.toString());
+      localStorage.setItem("alias", alias); 
+      navigate("/home");
     } catch (err) {
       setError("Credenciales incorrectas");
     }
