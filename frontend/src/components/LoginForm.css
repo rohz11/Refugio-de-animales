@@ -1,0 +1,78 @@
+.login-container{
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/fondo_login.jpg") center/cover no-repeat;
+}
+
+
+.login-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  max-width: 350px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #00852822;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form h2 {
+  margin-bottom: 1.5rem;
+  color: #008528;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.1rem;
+  border: 1.5px solid #b2dfdb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border 0.2s;
+}
+
+.login-form input:focus {
+  border-color: #008528;
+  outline: none;
+  background: #fff;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.8rem 0;
+  background: linear-gradient(90deg, #00ff99 0%, #008528 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #00852822;
+}
+
+.login-form button:hover {
+  background: linear-gradient(90deg, #008528 0%, #00ff99 100%);
+}
+
+.login-form div[style] {
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+  color: #d32f2f !important;
+  text-align: center;
+}

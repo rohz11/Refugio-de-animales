@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../api";
+import "./LoginForm.css";
 
 export default function LoginForm() {
   const [alias, setAlias] = useState("");
@@ -24,7 +25,9 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+  <div className="login-bg">
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
       <h2>Iniciar sesión</h2>
       <input
         value={alias}
@@ -41,6 +44,8 @@ export default function LoginForm() {
       />
       <button type="submit">Entrar</button>
       {error && <div style={{ color: "red" }}>{error}</div>}
-    </form>
+      </form>
+    </div> 
+  </div> 
   );
 }
