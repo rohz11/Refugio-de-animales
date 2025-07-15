@@ -13,14 +13,6 @@ def listar_mascotas(db: Session = Depends(get_db)):
     mascotas = db.query(models.Mascota).filter(models.Mascota.estado == True).all()
     return mascotas
 
-# Ver detalles de una mascota (público)
-@router.get("/{id_mascota}", response_model=schemas.MascotaResponse, summary="Obtener detalles de una mascota")
-def obtener_mascota(id_mascota: int, db: Session = Depends(get_db)):
-    mascota = db.query(models.Mascota).filter(models.Mascota.id_mascota == id_mascota, models.Mascota.estado == True).first()
-    if not mascota:
-        raise HTTPException(status_code=404, detail="Mascota no encontrada")
-    return mascota
-
 # Registrar una mascota (solo voluntario o admin)
 @router.post("/", response_model=schemas.MascotaResponse, summary="Registrar una nueva mascota")
 def registrar_mascota(mascota: schemas.MascotaCreate, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
@@ -40,27 +32,13 @@ def registrar_mascota(mascota: schemas.MascotaCreate, db: Session = Depends(get_
     db.refresh(nueva_mascota)
     return nueva_mascota
 
-# Actualizar una mascota (solo voluntario o admin)
-@router.put("/{id_mascota}", response_model=schemas.MascotaResponse, summary="Actualizar datos de una mascota")
-def actualizar_mascota(id_mascota: int, datos: schemas.MascotaUpdate, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
+# Ver detalles de una mascota (público)
+@router.get("/{id_mascota}", response_model=schemas.MascotaResponse, summary="Obtener detalles de una mascota")
+def obtener_mascota(id_mascota: int, db: Session = Depends(get_db)):
     mascota = db.query(models.Mascota).filter(models.Mascota.id_mascota == id_mascota, models.Mascota.estado == True).first()
     if not mascota:
         raise HTTPException(status_code=404, detail="Mascota no encontrada")
-    for campo, valor in datos.dict(exclude_unset=True).items():
-        setattr(mascota, campo, valor)
-    db.commit()
-    db.refresh(mascota)
     return mascota
-
-# Eliminación lógica de una mascota (solo voluntario o admin)
-@router.delete("/{id_mascota}", summary="Eliminar mascota lógicamente")
-def eliminar_mascota(id_mascota: int, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
-    mascota = db.query(models.Mascota).filter(models.Mascota.id_mascota == id_mascota, models.Mascota.estado == True).first()
-    if not mascota:
-        raise HTTPException(status_code=404, detail="Mascota no encontrada")
-    mascota.estado = False
-    db.commit()
-    return {"mensaje": "Mascota eliminada lógicamente"}
 
 # Agregar foto a una mascota
 @router.post("/{id_mascota}/fotos", response_model=schemas.FotoMascotaResponse, summary="Agregar foto a una mascota")
@@ -76,6 +54,18 @@ def agregar_foto_mascota(id_mascota: int, foto: schemas.FotoMascotaCreate, db: S
     db.refresh(nueva_foto)
     return nueva_foto
 
+# Actualizar una mascota (solo voluntario o admin)
+@router.put("/{id_mascota}", response_model=schemas.MascotaResponse, summary="Actualizar datos de una mascota")
+def actualizar_mascota(id_mascota: int, datos: schemas.MascotaUpdate, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
+    mascota = db.query(models.Mascota).filter(models.Mascota.id_mascota == id_mascota, models.Mascota.estado == True).first()
+    if not mascota:
+        raise HTTPException(status_code=404, detail="Mascota no encontrada")
+    for campo, valor in datos.dict(exclude_unset=True).items():
+        setattr(mascota, campo, valor)
+    db.commit()
+    db.refresh(mascota)
+    return mascota
+
 # Eliminar foto de mascota (lógica)
 @router.delete("/fotos/{id_foto}", summary="Eliminar foto de mascota")
 def eliminar_foto(id_foto: int, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
@@ -85,3 +75,13 @@ def eliminar_foto(id_foto: int, db: Session = Depends(get_db), user=Depends(requ
     foto.estado = False
     db.commit()
     return {"mensaje": "Foto eliminada lógicamente"}
+
+# Eliminación lógica de una mascota (solo voluntario o admin)
+@router.delete("/{id_mascota}", summary="Eliminar mascota lógicamente")
+def eliminar_mascota(id_mascota: int, db: Session = Depends(get_db), user=Depends(require_roles(["Voluntario", "Administrador"]))):
+    mascota = db.query(models.Mascota).filter(models.Mascota.id_mascota == id_mascota, models.Mascota.estado == True).first()
+    if not mascota:
+        raise HTTPException(status_code=404, detail="Mascota no encontrada")
+    mascota.estado = False
+    db.commit()
+    return {"mensaje": "Mascota eliminada lógicamente"}
