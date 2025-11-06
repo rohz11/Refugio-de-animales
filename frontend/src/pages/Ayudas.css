@@ -1,0 +1,39 @@
+:root{
+  --warm:#ffecd9;
+  --accent:#ffb86b;
+  --card:#fff;
+  --text:#24312a;
+}
+
+.ayudas-page{ background:var(--warm); color:var(--text); min-height:100vh; padding-top:96px }
+.container{ max-width:1200px; margin:0 auto; padding:1rem }
+
+.ayudas-hero{ background:linear-gradient(180deg,#fff7ef,#fff); padding:48px 0 }
+.ayudas-hero-inner{ max-width:900px }
+.ayudas-hero h1{ margin:0 0 0.5rem 0; color:var(--accent); font-size:2rem }
+.ayudas-hero .lead{ margin:0 0 1rem 0; color:#5a6b61 }
+.hero-ctas{ display:flex; gap:0.6rem }
+
+.btn{ padding:0.55rem 0.9rem; border-radius:10px; text-decoration:none; font-weight:700 }
+.btn.primary{ background:var(--accent); color:#fff }
+.btn.outline{ background:transparent; color:var(--accent); border:2px solid rgba(255,184,107,0.18) }
+
+.ayudas-section{ margin-top:1rem; padding:1rem 0 }
+.donation-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem }
+.vol-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem }
+.card{ background:var(--card); padding:1rem; border-radius:12px; box-shadow:0 8px 26px rgba(30,30,20,0.04) }
+.card h3{ margin:0 0 0.5rem 0; color:var(--accent) }
+.card p{ margin:0 0 0.5rem 0; color:#5a6b61 }
+.card ul{ margin:0.4rem 0 0 1rem }
+
+.notes{ color:#5a6b61; margin-top:1rem }
+
+.contact{ margin-bottom:2.2rem }
+
+@media (max-width:1000px){
+  .donation-grid, .vol-grid{ grid-template-columns:repeat(2,1fr) }
+}
+@media (max-width:520px){
+  .donation-grid, .vol-grid{ grid-template-columns:1fr }
+  .hero-ctas{ flex-direction:column }
+}

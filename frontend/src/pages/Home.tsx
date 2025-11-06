@@ -29,14 +29,7 @@ export default function Home() {
             <div className="card-icon">🤝</div>
             <h3 className="card-title">Cómo ayudar</h3>
             <p className="card-text">Voluntariado, donaciones y campañas — formas prácticas de colaborar.</p>
-            <Link to="/cuidados" className="card-link">Aprende más</Link>
-          </article>
-
-          <article className="feature-card">
-            <div className="card-icon">🎁</div>
-            <h3 className="card-title">Dona</h3>
-            <p className="card-text">Apoya con recursos para comida, medicinas y mejoras en el refugio.</p>
-            <Link to="/perfil_adopcion" className="card-link">Contribuir</Link>
+            <Link to="/ayudas" className="card-link">Aprende más</Link>
           </article>
         </section>
       </div>
