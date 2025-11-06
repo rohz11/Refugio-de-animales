@@ -137,36 +137,7 @@ export default function Cuidados() {
 				</ul>
 			</section>
 
-			<section className="container cuidados-section resources">
-				<h2>Recursos rápidos</h2>
-				<div className="resource-grid">
-					<a className="resource" href="#">
-						Guía de alimentación por edades
-					</a>
-					<a className="resource" href="#">
-						Lista de control para el primer día en casa
-					</a>
-					<a className="resource" href="#">
-						Preguntas frecuentes sobre vacunas
-					</a>
-					<a className="resource" href="#">
-						Contacto de emergencias veterinarias
-					</a>
-				</div>
-			</section>
-
-			<footer className="cuidados-cta container">
-				<div className="cta-inner">
-					<div>
-						<h3>¿Listo para brindar el mejor cuidado?</h3>
-						<p>Pequeños hábitos hacen grandes diferencias. Empieza hoy.</p>
-					</div>
-					<div className="cta-actions">
-						<button className="btn primary">Ver guía completa</button>
-						<button className="btn outline">Contactar voluntarios</button>
-					</div>
-				</div>
-			</footer>
+					{/* Recursos y CTA eliminados por solicitud del usuario */}
 		</main>
 	);
 }

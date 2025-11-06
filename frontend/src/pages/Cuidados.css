@@ -9,6 +9,8 @@
   background: var(--bg);
   color: #213b30;
   min-height: 100vh;
+  /* leave space for the fixed navbar so the header/title is not covered */
+  padding-top: 96px;
 }
 
 .container {
@@ -136,50 +138,7 @@
 }
 
 
-.resources .resource-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.9rem;
-}
-
-.resource {
-  display: block;
-  background: linear-gradient(180deg, #fff, #f8fff8);
-  padding: 0.9rem;
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--brand-olive);
-  font-weight: 600;
-  box-shadow: 0 6px 18px rgba(20, 30, 20, 0.03);
-}
-
-
-.cuidados-cta {
-  margin-top: 2rem;
-  padding: 1.2rem 0;
-}
-
-.cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.cta-inner h3 {
-  margin: 0;
-  color: var(--brand-olive);
-}
-
-.cta-inner p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.cta-actions {
-  display: flex;
-  gap: 0.6rem;
-}
+/* resources and CTA removed (section was deleted from JSX) */
 
 
 @media (max-width: 1000px) {
@@ -191,20 +150,12 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .resources .resource-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .cta-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  /* responsive rules for resources/cta removed */
 }
 
 @media (max-width: 520px) {
   .section-grid,
-  .tips-grid,
-  .resources .resource-grid {
+  .tips-grid {
     grid-template-columns: 1fr;
   }
 
