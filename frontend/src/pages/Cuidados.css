@@ -1,0 +1,218 @@
+:root {
+  --bg: #f7fbf8;
+  --card: #ffffff;
+  --brand-olive: #2c6b4a;
+  --muted: #6b8a78;
+}
+
+.cuidados-page {
+  background: var(--bg);
+  color: #213b30;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.cuidados-hero {
+  background: linear-gradient(180deg, #eef9ef, #ffffff);
+  padding: 56px 0;
+  display: flex;
+  align-items: center;
+}
+
+.cuidados-hero-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.cuidados-hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--brand-olive);
+}
+
+.cuidados-hero .lead {
+  font-size: 1.08rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: var(--brand-olive);
+  color: #fff;
+}
+
+.btn.outline {
+  background: transparent;
+  color: var(--brand-olive);
+  border: 2px solid rgba(44, 107, 74, 0.12);
+}
+
+.cuidados-intro {
+  padding: 1.2rem 1rem;
+}
+
+.cuidados-intro p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cuidados-section {
+  margin-top: 1rem;
+  padding: 1rem 0;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(21, 34, 21, 0.04);
+}
+
+.card h3 {
+  margin: 0 0 0.6rem 0;
+  color: var(--brand-olive);
+}
+
+.card p {
+  margin: 0 0 0.6rem 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.card ul,
+.card ol {
+  margin: 0.4rem 0 0 1rem;
+  color: var(--muted);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.tip {
+  background: var(--card);
+  padding: 0.9rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(10, 20, 10, 0.03);
+}
+
+.tip strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--brand-olive);
+}
+
+.checklist {
+  margin: 0.6rem 0 0 1rem;
+  color: var(--muted);
+}
+
+
+.resources .resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.resource {
+  display: block;
+  background: linear-gradient(180deg, #fff, #f8fff8);
+  padding: 0.9rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--brand-olive);
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(20, 30, 20, 0.03);
+}
+
+
+.cuidados-cta {
+  margin-top: 2rem;
+  padding: 1.2rem 0;
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cta-inner h3 {
+  margin: 0;
+  color: var(--brand-olive);
+}
+
+.cta-inner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cta-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+
+@media (max-width: 1000px) {
+  .section-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resources .resource-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .section-grid,
+  .tips-grid,
+  .resources .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cuidados-hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+  }
+}
