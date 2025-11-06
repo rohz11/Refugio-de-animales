@@ -11,9 +11,11 @@
   left:0;
   right:0;
   z-index:1000;
-  /* Fondo amigable para refugio: degradado suave verde/crema */
-  background: linear-gradient(90deg, #f2fbf4 0%, #e6f6ea 50%, #eaf6f0 100%);
-  box-shadow: 0 6px 18px rgba(40,50,60,0.06);
+  /* Variante: barra sutil con efecto glass que combina con fondo crema/verde */
+  background: rgba(236, 249, 241, 0.85);
+  backdrop-filter: blur(6px) saturate(110%);
+  border-bottom: 1px solid rgba(44,107,74,0.06);
+  box-shadow: 0 8px 22px rgba(30,40,30,0.04);
   font-family: 'Poppins', 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
@@ -46,6 +48,9 @@
   animation: paw-bounce 1.2s infinite ease-in-out;
 }
 
+.brand-main{ font-weight:800; letter-spacing:0.6px }
+.brand-tagline{ display:block; font-size:0.75rem; color:rgba(30,60,40,0.7); font-weight:600 }
+
 @keyframes paw-bounce{
   0%{transform:translateY(0)}
   50%{transform:translateY(-4px)}
@@ -62,14 +67,23 @@
   color:var(--brand-olive);
   text-decoration:none;
   font-weight:600;
-  padding:0.45rem 0.9rem;
-  border-radius:999px;
+  padding:0.55rem 1rem;
+  border-radius:12px;
   transition:background 180ms, color 180ms, transform 120ms;
+  display:inline-flex;
+  align-items:center;
+  gap:0.5rem;
 }
 
 .nav-link:hover{
-  background: rgba(44,107,74,0.08);
-  transform:translateY(-2px);
+  background: linear-gradient(90deg, rgba(44,107,74,0.08), rgba(44,107,74,0.04));
+  transform:translateY(-3px);
+}
+
+.nav-list{
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
 }
 
 .login-register-group{
@@ -91,16 +105,16 @@
 .login-btn:hover{ background:var(--muted-olive); color:#08321a }
 
 .register-btn{
-  padding:0.45rem 0.95rem;
-  border-radius:999px;
+  padding:0.5rem 1rem;
+  border-radius:10px;
   background:var(--brand-olive);
   color:var(--accent);
   text-decoration:none;
   font-weight:700;
-  box-shadow: 0 6px 14px rgba(44,107,74,0.12);
+  box-shadow: 0 8px 18px rgba(44,107,74,0.12);
 }
 
-.register-btn:hover{ transform:translateY(-2px); filter:brightness(0.98) }
+.register-btn:hover{ transform:translateY(-2px); filter:brightness(0.97) }
 
 .user-alias{
   background:transparent;
@@ -123,7 +137,7 @@
 }
 
 /* Hamburger (mobile) */
-.hamburger{
+  .hamburger{
   display:none;
   width:36px;
   height:36px;
@@ -152,11 +166,11 @@
 /* Responsive */
 @media (max-width:900px){
   .navbar-inner{ padding:0.6rem 0.8rem }
-  .nav-link{ display:none }
-  .login-register-group{ display:none }
+    .nav-list{ display:none }
+    .login-register-group{ display:none }
   .hamburger{ display:flex }
 
-  .navbar-links{
+    .navbar-links{
     position: absolute;
     top: calc(100% + 8px);
     right: 12px;

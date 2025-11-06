@@ -27,7 +27,8 @@ export default function Navbar() {
           tabIndex={0}
           onClick={() => navigate("/")}
         >
-          Huellitas de amor
+          <div className="brand-main">Huellitas de amor</div>
+          <span className="brand-tagline">Refugio y adopción responsable</span>
         </div>
 
         <button
