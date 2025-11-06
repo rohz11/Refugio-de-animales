@@ -9,7 +9,6 @@
   background: var(--bg);
   color: #213b30;
   min-height: 100vh;
-  /* leave space for the fixed navbar so the header/title is not covered */
   padding-top: 96px;
 }
 
